@@ -1,0 +1,390 @@
+# 加载动画
+## 动画一
+<load-first/>
+```css
+.boxLoading {
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    &:before {
+      content: "";
+      width: 50px;
+      height: 5px;
+      background: #000;
+      opacity: 0.1;
+      position: absolute;
+      top: 59px;
+      left: 0;
+      border-radius: 50%;
+      animation: shadow 0.5s linear infinite;
+    }
+    &:after {
+      content: "";
+      width: 50px;
+      height: 50px;
+      background: #00adb5;
+      animation: animate 0.5s linear infinite;
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 3px;
+    }
+  }
+}
+
+@keyframes animate {
+  17% {
+    border-bottom-right-radius: 3px;
+  }
+  25% {
+    transform: translateY(9px) rotate(22.5deg);
+  }
+  50% {
+    transform: translateY(18px) scale(1, 0.9) rotate(45deg);
+    border-bottom-right-radius: 40px;
+  }
+  75% {
+    transform: translateY(9px) rotate(67.5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(90deg);
+  }
+}
+
+@keyframes shadow {
+  0%,
+  100% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(1.2, 1);
+  }
+}
+```
+## 动画二
+<load-second/>
+```css
+.load {
+    width: 50px;
+    height: 50px;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: rgba(0, 169, 178,.2);;
+    &::before {
+        content: "";
+        width: 70px; // 50 * √2
+        height: 70px; // 50 * √2
+        background-color: #00adb5;
+        position: absolute;
+        left: 50%;
+        bottom: 50%;
+        z-index: 1;
+        transform-origin: left bottom;
+        animation: rotate 1.5s infinite linear;
+    }
+    &::after {
+        content: "";
+        width: 40px;
+        height: 40px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        background-color: #fff;
+        z-index: 2;
+        border-radius: 50%;
+    }
+    }
+    @keyframes rotate {
+    0% {
+        transform: rotate(0);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+  }
+```
+## 动画三
+<load-third/>
+```html
+<div class="load-container">
+    <div class="container">
+        <div class="boxLoading boxLoading1"></div>
+        <div class="boxLoading boxLoading2"></div>
+        <div class="boxLoading boxLoading3"></div>
+        <div class="boxLoading boxLoading4"></div>
+        <div class="boxLoading boxLoading5"></div>
+    </div>
+</div>
+```
+```css
+.load-container {
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .container{
+        width: 50px;
+        height: 60px;
+        text-align: center;
+        font-size: 10px;
+        .boxLoading {
+            background-color: #00adb5;
+            height: 100%;
+            width: 6px;
+            display: inline-block;
+
+            -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
+            animation: stretchdelay 1.2s infinite ease-in-out;
+        }
+        .boxLoading2 {
+            -webkit-animation-delay: -1.1s;
+            animation-delay: -1.1s;
+        }
+        .boxLoading3 {
+            -webkit-animation-delay: -1.0s;
+            animation-delay: -1.0s;
+        }
+        .boxLoading4 {
+            -webkit-animation-delay: -0.9s;
+            animation-delay: -0.9s;
+        }
+        .boxLoading5 {
+            -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s;
+        }
+    }
+}
+
+@-webkit-keyframes stretchdelay {
+  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }
+  20% { -webkit-transform: scaleY(1.0) }
+}
+@keyframes stretchdelay {
+  0%, 40%, 100% {
+    transform: scaleY(0.4);
+    -webkit-transform: scaleY(0.4);
+  }  20% {
+    transform: scaleY(1.0);
+    -webkit-transform: scaleY(1.0);
+  }
+}
+```
+## 动画四
+<load-four/>
+```css
+.load-container {
+    width: 60px;
+    height: 60px;
+    background-color: #00adb5;
+
+    margin: 50px auto;
+    -webkit-animation: rotateplane 1.2s infinite ease-in-out;
+    animation: rotateplane 1.2s infinite ease-in-out;
+}
+
+@-webkit-keyframes rotateplane {
+  0% { -webkit-transform: perspective(120px) }
+  50% { -webkit-transform: perspective(120px) rotateY(180deg) }
+  100% { -webkit-transform: perspective(120px) rotateY(180deg)  rotateX(180deg) }
+}
+
+@keyframes rotateplane {
+  0% {
+    transform: perspective(120px) rotateX(0deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(0deg) rotateY(0deg)
+  } 50% {
+    transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg);
+    -webkit-transform: perspective(120px) rotateX(-180.1deg) rotateY(0deg)
+  } 100% {
+    transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+    -webkit-transform: perspective(120px) rotateX(-180deg) rotateY(-179.9deg);
+  }
+}
+```
+## 动画五
+<load-five/>
+```html
+<div class="load-container">
+    <div class="load load1"></div>
+    <div class="load load2"></div>
+    <div class="load"></div>
+</div>
+```
+```css
+.load-container {
+    margin: 50px auto;
+    width: 150px;
+    text-align: center;
+    .load {
+        width: 20px;
+        height: 20px;
+        background-color: #00adb5;
+
+        border-radius: 100%;
+        display: inline-block;
+        -webkit-animation: bouncedelay 1.4s infinite ease-in-out;
+        animation: bouncedelay 1.4s infinite ease-in-out;
+        /* Prevent first frame from flickering when animation starts */
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+    }
+    .load1 {
+        -webkit-animation-delay: -0.32s;
+        animation-delay: -0.32s;
+    }
+    .load2 {
+        -webkit-animation-delay: -0.16s;
+        animation-delay: -0.16s;
+    }
+}
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0.0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 40% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+```
+## 动画六
+<load-six/>
+```html
+<div class="load-container">
+    <div class="container container1">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+        <div class="circle circle4"></div>
+    </div>
+    <div class="container container2">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+        <div class="circle circle4"></div>
+    </div>
+    <div class="container container3">
+        <div class="circle circle1"></div>
+        <div class="circle circle2"></div>
+        <div class="circle circle3"></div>
+        <div class="circle circle4"></div>
+    </div>
+</div>
+```
+```css
+.load-container {
+    margin: 50px auto;
+    width: 48px;
+    height: 48px;
+    position: relative;
+    .container{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        .circle{
+            width: 12px;
+            height: 12px;
+            background-color: #00adb5;
+
+            border-radius: 100%;
+            position: absolute;
+            -webkit-animation: bouncedelay 1.2s infinite ease-in-out;
+            animation: bouncedelay 1.2s infinite ease-in-out;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+        }
+        .circle1 { top: 0; left: 0; }
+        .circle2 { top: 0; right: 0; }
+        .circle3 { right: 0; bottom: 0; }
+        .circle4 { left: 0; bottom: 0; }
+    }
+    .container1 {
+        .circle2 {
+            -webkit-animation-delay: -0.9s;
+            animation-delay: -0.9s;
+        }
+        .circle3 {
+            -webkit-animation-delay: -0.6s;
+            animation-delay: -0.6s;
+        }
+        .circle4 {
+            -webkit-animation-delay: -0.3s;
+            animation-delay: -0.3s;
+        }
+    }
+    .container2 {
+        -webkit-transform: rotateZ(45deg);
+        transform: rotateZ(45deg);
+        .circle1 {
+            -webkit-animation-delay: -1.1s;
+            animation-delay: -1.1s;
+        }
+        .circle2 {
+            -webkit-animation-delay: -0.8s;
+            animation-delay: -0.8s;
+        }
+        .circle3 {
+            -webkit-animation-delay: -0.5s;
+            animation-delay: -0.5s;
+        }
+        .circle4 {
+            -webkit-animation-delay: -0.2s;
+            animation-delay: -0.2s;
+        }
+    }
+    .container3 {
+        -webkit-transform: rotateZ(90deg);
+        transform: rotateZ(90deg);
+        .circle1 {
+            -webkit-animation-delay: -1.0s;
+            animation-delay: -1.0s;
+        }
+        .circle2 {
+            -webkit-animation-delay: -0.7s;
+            animation-delay: -0.7s;
+        }
+        .circle3 {
+            -webkit-animation-delay: -0.4s;
+            animation-delay: -0.4s;
+        }
+        .circle4 {
+            -webkit-animation-delay: -0.1s;
+            animation-delay: -0.1s;
+        }
+    }
+}
+
+@-webkit-keyframes bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0.0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes bouncedelay {
+  0%, 80%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 40% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}
+```

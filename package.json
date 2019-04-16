@@ -1,0 +1,25 @@
+{
+    "name": "dfairyblog",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "docs:dev": "vuepress dev docs",
+        "docs:build": "vuepress build docs",
+        "bash": "bash deploy.sh"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "node-sass": "^4.11.0",
+        "sass-loader": "^7.1.0"
+    },
+    "dependencies": {
+        "element-ui": "^2.7.2",
+        "hexo-helper-live2d": "^3.1.1",
+        "less": "^3.9.0",
+        "vuepress": "^1.0.0-alpha.46"
+    }
+}
