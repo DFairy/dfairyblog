@@ -19,7 +19,6 @@ module.exports = {
         },
         lastUpdated: 'Last Updated', // 最后更新时间
         nav: [
-            // { text: '主页', link: '/' },
             { text: '前端积累', link: '/accumulate/' },
             { text: '文档速记', link: '/document/' },
             { text: 'Bug库', link: '/errorAccumulate/' },
@@ -55,7 +54,8 @@ module.exports = {
                         '/accumulate/Css/搜索框',
                         '/accumulate/Css/tab',
                         '/accumulate/Css/滚动条进度',
-                        '/accumulate/Css/滚动吸顶'
+                        '/accumulate/Css/滚动吸顶',
+                        '/accumulate/Css/flex'
                     ]
                 },
                 {
@@ -63,7 +63,8 @@ module.exports = {
                     children: [
                         '/accumulate/Vue/根据环境配置url',
                         '/accumulate/Vue/通信',
-                        '/accumulate/Vue/路由切换效果'
+                        '/accumulate/Vue/路由切换效果',
+
                     ]
                 },
                 {
@@ -72,12 +73,14 @@ module.exports = {
                         '/accumulate/Node/七牛云上传'
                     ]
                 },
-                // {
-                //     title: 'Webpack',
-                //     children: [
-                //         '/accumulate/Webpack/web'
-                //     ]
-                // }
+                {
+                    title: '面试',
+                    children: [
+                        '/accumulate/Interview/闭包',
+                        '/accumulate/Interview/缓存',
+                        '/accumulate/Interview/回调函数'
+                    ]
+                },
 
             ],
             '/document/': [
@@ -100,15 +103,21 @@ module.exports = {
                 }
             ],
             '/tools/': [
-                // '/tools/',
-                '/tools/tool/vueTool',
-                '/tools/tool/vsc技能1'
-                // {
-                //     title: '推荐',
-                //     children: [
-
-                //     ]
-                // }
+                '/tools/',
+                {
+                    title: '工具',
+                    children: [
+                        '/tools/tool/vueTool',
+                        '/tools/tool/vsc技能1'
+                    ]
+                },
+                {
+                    title: '插件',
+                    children: [
+                        '/tools/plugin/懒加载插件',
+                        '/tools/plugin/better-scroll',
+                    ]
+                }
             ],
         },
         sidebarDepth: 3,
