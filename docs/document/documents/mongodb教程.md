@@ -9,7 +9,7 @@
 2. 点击exe程序一步一步向下安装直到结束
 3. 配置path环境，找到C:\Program Files\MongoDB\Server\3.4\bin这个目录。电脑属性==》高级==》环境变量==》编辑path==》添加刚刚这个目录到path
 4. 打开cmd,输入mongo,出现以下这些就说明配置成功了
-![图片](http://porcin457.bkt.clouddn.com/1554255182%281%29.png)
+![图片](https://dfairy-1258930237.cos.ap-shanghai.myqcloud.com/1554255182%281%29.png)
 
 ## 数据库的连接与使用
 1. 新建mongo文件夹，复制目录路径
@@ -350,9 +350,30 @@ student
 } 
 ```
 ### 使用export导出数据
+1. 查看帮助
+```
+mongoexport --help
+```
+2. 基础版
+:::tip
+导出的路径要写完具体的路径，例如C:/blog/list.json
+:::
 ```
 mongoexport -d <数据库名> -c <集合名> -o <导出的路径>
 ```
+
+3.加密版
+```
+mongoexport -u <用户名> -p <密码> -d <数据库名> -c <集合名> -o <导出的路径>
+```
+4. 报错
+
+:question:报错信息:`error connecting to db server: server returned error on SASL authentication step: Authentication failed.`
+
+:heavy_check_mark:解决方法:
+
+加上`--authenticationDatabase admin`
+
 
 ## 使用node操作数据库
 文档参考地址：[http://mongodb.github.io/node-mongodb-native/3.1/quick-start/quick-start/](http://mongodb.github.io/node-mongodb-native/3.1/quick-start/quick-start/)
@@ -491,4 +512,67 @@ kitty.find((err, kittens) => {
     }
     console.log(kittens)
 })
+```
+## 给mongodb设置密码
+:::warning
+如果项目上线一定要设置密码，千万不能是小项目或者是练手的项目就不设置密码
+:::
+### 给admin设置密码
+1. 切换到`admin`数据库
+```sql
+use User
+switched to db User
+```
+
+2. 给admin设置用户名和密码
+* user:用户名 
+* pwd:密码
+* roles:用来设置用户的权限
+```sql
+db.createUser({user: 'root', pwd: '123456', roles: ['root']})
+```
+3. 验证是否添加成功
+
+```sql
+db.auth(用户名，用户密码)
+```
+如果返回1则表示验证成功，如果是0则失败
+
+4. 给每个特定的库设置密码，拿test举例子
+```sql
+db.createUser({user:'admin',pwd:'admin123',roles: [{role:'readWrite',db:'test'}]})})
+```
+这行代码意思是 创建一个admin用户 给予读写权限 db表示该用户操作的数据库名
+
+5. 重新启动数据库并开启验证--auth
+
+```sql
+mongod --dbpath 存放数据库文件夹路径 --auth
+```
+
+6. 连接数据库
+ * 第一种 shell端
+```sql
+C:\Users\wd001>mongo
+MongoDB shell version v3.4.1
+connecting to: mongodb://127.0.0.1:27017
+MongoDB server version: 3.4.1
+> use admin
+switched to db admin
+> db.auth('root','123456')
+1
+> show dbs
+admin          0.000GB
+list           0.000GB
+local          0.000GB
+```
+ * 第二种 代码连接
+```js
+xxx.db('mongodb://your name: your pwd@ ip :27017/test');
+your name：为用户名
+your pwd:为密码
+```
+这一种连接过程可能失败，需要加上authSource=admin
+```js
+mongoose.connect('mongodb://root:123456@127.0.0.1:27017/user?authSource=admin', { useNewUrlParser: true });
 ```

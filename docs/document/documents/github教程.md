@@ -7,7 +7,7 @@
 2. 点击`new repository `
 3. 根据下面这张图填进信息,创建完成后就会在仓库中看到项目了。
 
-![图片](http://porcin457.bkt.clouddn.com/20181207103315242.png)
+![图片](https://dfairy-1258930237.cos.ap-shanghai.myqcloud.com/20181207103315242.png)
 
 ## Git下载与配置
 
@@ -57,7 +57,7 @@ The key fingerprint is:e3:51:33:xx:xx:xx:xx:xxx:61:28:83:e2:81 xxxxxx@yy.com
 1. 打开刚刚新建的GitHub项目，进入首页
 
 2. 点击`clone or download`,复制链接
-![图片](http://porcin457.bkt.clouddn.com/2019-04-02_133343.png)
+![图片](https://dfairy-1258930237.cos.ap-shanghai.myqcloud.com/2019-04-02_133343.png)
 
 ### 上传代码到Github
 打开Git Bash,输入下面命令，再打开Github就能看到了

@@ -35,7 +35,7 @@
       padding: 30px 0;
       border: 1px solid #efefef;
       background-color: #FFFFFD;
-      background-image: url(http://porcin457.bkt.clouddn.com/paper.png);
+      background-image: url(https://dfairy-1258930237.cos.ap-shanghai.myqcloud.com/paper.png);
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
       display: flex;
       justify-content: center;

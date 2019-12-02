@@ -7,20 +7,23 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "docs:dev": "vuepress dev docs",
         "docs:build": "vuepress build docs",
-        "bash": "bash deploy.sh"
+        "deploy": "bash deploy.sh"
     },
     "keywords": [],
     "author": "",
     "license": "ISC",
     "devDependencies": {
-        "node-sass": "^4.11.0",
+        "node-sass": "^4.12.0",
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
         "better-scroll": "^1.15.2",
+        "clipboard": "^2.0.4",
         "element-ui": "^2.7.2",
         "hexo-helper-live2d": "^3.1.1",
         "less": "^3.9.0",
+        "swiper": "^4.5.0",
+        "vue-clipboard2": "^0.3.1",
         "vuepress": "^1.0.0-alpha.46"
     }
 }

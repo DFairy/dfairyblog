@@ -24,6 +24,6 @@
 1. 进入一个用vue写的网站，比如说vue官网
 
 2. F12进入控制台找到vue就可以使用了，如下图所示：
-![图片](http://porcin457.bkt.clouddn.com/vue-tools.png)
+![图片](https://dfairy-1258930237.cos.ap-shanghai.myqcloud.com/vue-tools.png)
 
 

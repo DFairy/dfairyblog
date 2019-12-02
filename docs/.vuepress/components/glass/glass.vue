@@ -18,7 +18,7 @@
 <style scoped lang="scss">
   main {
     height: 350px;
-    background: url(http://porcin457.bkt.clouddn.com/%E4%BA%BA%E7%94%9F1.jpg) fixed center  -50px/ cover no-repeat;
+    background: url(https://dfairy-1258930237.cos.ap-shanghai.myqcloud.com/%E4%BA%BA%E7%94%9F1.jpg) fixed center  -50px/ cover no-repeat;
     position: relative;
     color: #fff;
     section {
@@ -43,7 +43,7 @@
         width: 100%;
         height: 100%;
         filter: blur(10px);
-        background: url(http://porcin457.bkt.clouddn.com/%E4%BA%BA%E7%94%9F1.jpg) fixed center -50px / cover no-repeat;
+        background: url(https://dfairy-1258930237.cos.ap-shanghai.myqcloud.com/%E4%BA%BA%E7%94%9F1.jpg) fixed center -50px / cover no-repeat;
         z-index: -1;
       }
     }

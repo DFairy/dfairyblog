@@ -1,0 +1,72 @@
+<template>
+    <div class="container">
+        <div class="box">
+            <div class="up">up</div>
+            <div class="down">down</div>
+            <div class="left">left</div>
+            <div class="right">right</div>
+            <div class="front">front</div>
+            <div class="back">back</div>
+        </div>
+    </div>
+</template>
+
+<style lang='scss' scoped>
+.container {
+    transform-style: preserve-3d;
+    perspective: 2000px;
+}
+.box {
+    width: 400px;
+    height: 400px;
+    margin: 50px auto;
+    transform-style: preserve-3d;
+    transition: transform 10s;
+    animation: rotating 10s linear infinite;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotateY(0deg);
+    }
+    to {
+        transform: rotateY(-360deg);
+    }
+}
+
+.box div {
+    width: 400px;
+    height: 400px;
+    opacity: 0.7;
+    border: 4px solid rgb(0, 84, 156);
+    background: rgba(0, 84, 156, 0.55);
+    text-align: center;
+    line-height: 400px;
+    color: #fff;
+    position: absolute
+}
+
+.up {
+    transform: rotateX(90deg) translateZ(204px)
+}
+
+.down {
+    transform: rotateX(-90deg) translateZ(204px)
+}
+
+.left {
+    transform: rotateY(-90deg) translateZ(204px)
+}
+
+.right {
+    transform: rotateY(90deg) translateZ(204px)
+}
+
+.front {
+    transform: translateZ(204px);
+}
+
+.back {
+    transform: rotateY(180deg) translateZ(204px)
+}
+</style>

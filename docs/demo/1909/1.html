@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div {
+            margin-left: 10px;
+        }
+        
+        .tree>div>.tree {
+            display: none;
+        }
+        
+        .tree.next::before {
+            content: '+';
+            cursor: pointer;
+        }
+        
+        .tree.next.show>div>.tree {
+            display: block;
+        }
+        
+        .tree.next.show::before {
+            content: '-';
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo"></div>
+    <script>
+        var data = [{
+            name: 'node1',
+            children: [{
+                name: 'node1-1',
+                children: [{
+                    name: 'node1-2-2'
+                }]
+            }, {
+                name: 'node1-2',
+                children: [{
+                    name: 'node1-2-1'
+                }]
+            }]
+        }, {
+            name: 'node2',
+            children: [{
+                name: 'node2-1',
+                children: [{
+                    name: 'node2-1-1'
+                }, {
+                    name: 'node2-1-2'
+                }]
+            }, {
+                name: 'node2-2',
+                children: [{
+                    name: 'node2-2-1'
+                }, {
+                    name: 'node2-2-2'
+                }]
+            }]
+        }, {
+            name: 'node3',
+            children: [{
+                name: 'node3-1',
+                children: [{
+                    name: 'node3-1-1'
+                }, {
+                    name: 'node3-1-2'
+                }]
+            }, {
+                name: 'node3-2',
+                children: [{
+                    name: 'node3-2-1'
+                }, {
+                    name: 'node3-2-2'
+                }]
+            }]
+        }]
+
+        function dTree(data) {
+            var resultDom = document.createElement('div')
+            data.forEach(function(item, index) {
+                var dom = document.createElement('div')
+                dom.className = 'tree'
+                dom.innerText = item.name
+                dom.onclick = function(e) {
+                    e.stopPropagation()
+                    var isshow = [].slice.call(this.classList, 0).indexOf('show') > -1
+                    if (isshow) {
+                        this.classList.remove('show')
+                    } else {
+                        this.classList.add('show')
+                    }
+                }
+                if (item.children && item.children.length) {
+                    dom.classList.add('next')
+                    var node = dTree(item.children)
+                    dom.appendChild(node)
+                }
+                resultDom.appendChild(dom)
+            });
+            return resultDom;
+        }
+
+        var node = dTree(data)
+        var demo = document.getElementById('demo')
+        demo.appendChild(node)
+    </script>
+</body>
+
+</html>
